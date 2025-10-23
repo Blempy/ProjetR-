@@ -1,0 +1,77 @@
+Phases types d’un projet de Maîtrise d’Œuvre VRD
+1. Études Préliminaires
+Objectif : Évaluer la faisabilité technique, réglementaire et financière du projet.
+Contenu :
+- Analyse du programme du maître d’ouvrage.
+- Relevés de terrain et diagnostic.
+- Études de faisabilité.
+- Études préalables (géotechnique, hydrologie, servitudes).
+Livrables : Note de faisabilité, plan de principe, estimation sommaire.
+2. Avant-Projet (AVP)
+Objectif : Définir les principales caractéristiques techniques et géométriques.
+Contenu :
+- Choix des solutions techniques.
+- Étude des contraintes et servitudes.
+- Coordination avec concessionnaires.
+- Estimation affinée du coût.
+Livrables : Plans AVP, note technique, estimation détaillée.
+3. Projet (PRO)
+Objectif : Arrêter le projet pour préparer la consultation des entreprises.
+Contenu :
+- Études détaillées d’exécution.
+- Vérification normative.
+- Estimation définitive du coût.
+Livrables : Dossier PRO complet (plans, CCTP, estimatif).
+4. Assistance à la passation des Contrats de Travaux (ACT)
+Objectif : Aider le maître d’ouvrage à choisir les entreprises.
+Contenu :
+- Rédaction du DCE.
+- Analyse des offres.
+- Assistance au choix du titulaire.
+Livrables : Rapport d’analyse des offres, proposition d’attribution.
+5. Direction de l’Exécution des Travaux (DET/VISA)
+Objectif : Assurer le suivi technique, administratif et financier.
+Contenu :
+- Vérification des plans (VISA).
+- Réunions de chantier.
+- Contrôle de conformité.
+- Suivi des dépenses.
+Livrables : Comptes rendus, ordres de service, suivi financier.
+
+6. Assistance aux Opérations de Réception (AOR)
+Objectif : Constater la conformité et clôturer les travaux.
+Contenu :
+- Visites de pré-réception.
+- PV de réception.
+- Levée des réserves.
+- Validation du DOE.
+Livrables : PV de réception, suivi des réserves, DOE complet.
+Résumé synthétique :
+Phase
+Acronyme
+Objectif principal
+Livrables clés
+Études préliminaires
+-
+Vérifier la faisabilité
+Note de faisabilité, plan de principe
+Avant-projet
+AVP
+Définir les grandes lignes techniques
+Plans, note technique, estimation
+Projet
+PRO
+Finaliser le dossier technique
+CCTP, plans d’exécution, estimatif
+Assistance à la consultation
+ACT
+Choisir les entreprises
+DCE, rapport d’analyse
+Direction de travaux
+DET/VISA
+Suivre et contrôler le chantier
+CR de chantier, OS, suivi financier
+Réception
+AOR
+Réceptionner et clôturer
+PV de réception, DOE
