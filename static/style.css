@@ -1,0 +1,170 @@
+:root {
+  --bg: #f7f9fc;
+  --card-bg: #ffffff;
+  --border: #d9e2ec;
+  --primary: #2563eb;
+  --primary-text: #ffffff;
+  --secondary: #64748b;
+  --secondary-text: #ffffff;
+  --error-bg: #fee2e2;
+  --error-text: #b91c1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg);
+  color: #1f2933;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.site-header, .site-footer {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+.site-header a {
+  color: #e5e7eb;
+  margin-right: 1rem;
+}
+
+.site-header nav a {
+  font-weight: 600;
+}
+
+.site-footer small {
+  color: #9ca3af;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+input[type="text"],
+textarea,
+select {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font: inherit;
+  background: #f8fafc;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--primary);
+  color: var(--primary-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button.secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-text);
+}
+
+.button:hover {
+  opacity: 0.92;
+  text-decoration: none;
+}
+
+.flash-wrapper {
+  margin-bottom: 1rem;
+}
+
+.flash {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.flash-error {
+  background-color: var(--error-bg);
+  color: var(--error-text);
+}
+
+.success-card h2 {
+  color: #047857;
+}
+
+.phase-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0;
+}
+
+.hint {
+  color: #475569;
+  font-size: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+fieldset.field-group {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+fieldset.field-group legend {
+  font-weight: 600;
+  padding: 0 0.4rem;
+}

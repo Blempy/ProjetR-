@@ -53,7 +53,7 @@
 ## Documents et ressources à préparer
 
 - Gabarits : modèles Word/Excel, charte AutoCAD, légendes Covadis/Mensura.
-- Scripts/macro : AutoCAD (AutoLISP), VBA Office, Python (si pertinent), `scripts/create_task_sheet.py` (assistant fiches Markdown).
+- Scripts/macro : AutoCAD (AutoLISP), VBA Office, Python (si pertinent), `scripts/create_task_sheet.py` (assistant fiches Markdown), `app.py` (interface web locale).
 - Tableaux de bord : suivi de projet (Excel ou Power BI/LibreOffice), diagrammes Gantt.
 - Guides : procédures pour lancer chaque automatisation, vidéos courtes (optionnel).
 

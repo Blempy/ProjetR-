@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil — Automatisation MOE VRD{% endblock %}
+
+{% block content %}
+<section class="card">
+  <h2>Démarrer</h2>
+  <p>Utilisez les formulaires ci-dessous pour alimenter vos documents Markdown sans passer par la ligne de commande.</p>
+  <div class="actions">
+    <a class="button" href="{{ url_for('task_form') }}">Nouvelle fiche tâche</a>
+    <a class="button secondary" href="{{ url_for('pain_form') }}">Log point de douleur</a>
+  </div>
+</section>
+
+<section class="card">
+  <h3>Phases disponibles</h3>
+  <ul class="phase-list">
+    {% for phase in phase_options %}
+      <li>{{ phase }}</li>
+    {% endfor %}
+  </ul>
+  <p class="hint">Vous pouvez saisir un intitulé différent dans les formulaires si nécessaire.</p>
+</section>
+{% endblock %}

@@ -1,6 +1,7 @@
 # Processus de collecte des points de douleur par phase
 
-> Objectif : identifier rapidement les tâches les plus chronophages ou risquées afin de prioriser les automatismes à développer.
+> Objectif : identifier rapidement les tâches les plus chronophages ou risquées afin de prioriser les automatismes à développer.  
+> Outil recommandé : formulaire web (`python3 app.py` → onglet « Point de douleur ») ou saisie directe dans les fichiers Markdown.
 
 ## Étape 1 — Préparer la revue de phase
 

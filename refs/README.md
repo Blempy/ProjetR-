@@ -8,7 +8,8 @@ Contenu actuel :
 - `Phases_MOE_VRD.md` : transcription markdown validée du PDF (référentiel phases/tâches).
 - `phases_taches.md` : synthèse enrichie avec pistes d'automatisation par phase.
 - `modele_fiche_tache.md` : gabarit à cloner pour documenter chaque tâche.
-- `fiches_taches/` : fiches individuelles créées à partir du gabarit ou via le script.
+- `fiches_taches/` : fiches individuelles créées à partir du gabarit ou via le script/app web.
+- `points_douleur/` : tableaux Markdown des irritants par phase (alimentés depuis le formulaire ou manuellement).
 - `process_points_douleur.md` : méthode pour collecter et noter les irritants par phase.
 - `plan_developpement.md` : feuille de route globale pour structurer les travaux.
 - `todo.md` : liste des actions à lancer ou à suivre.
@@ -16,15 +17,21 @@ Contenu actuel :
 Scripts utiles :
 
 - `scripts/create_task_sheet.py` : assistant interactif (ligne de commande) pour générer rapidement une fiche tâche dans `refs/fiches_taches/`.
+- `app.py` : application web locale (Flask) proposant des formulaires pour créer les fiches et enregistrer les points de douleur.
 - Atelier points de douleur : suivre `refs/process_points_douleur.md`.
 
 Exécution :
 
 ```bash
+# Assistant CLI
 ./scripts/create_task_sheet.py
+
+# Application web locale (après installation des dépendances)
+python3 app.py
 ```
 
-Le script vous guidera question par question, puis créera un fichier Markdown dont le nom suit le format `AAAA-MM-JJ-intitule.md`.
+Le script vous guidera question par question, puis créera un fichier Markdown dont le nom suit le format `AAAA-MM-JJ-intitule.md`.  
+L'application web accessible sur <http://127.0.0.1:5000> propose les mêmes fonctionnalités via une interface graphique et enregistre directement les fichiers dans `refs/`.
 
 Règles d'usage :
 

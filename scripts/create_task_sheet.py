@@ -7,15 +7,9 @@ un fichier Markdown conforme au modèle `refs/modele_fiche_tache.md`.
 
 from __future__ import annotations
 
-import re
-from datetime import datetime
 from pathlib import Path
-from textwrap import indent
 
-ROOT = Path(__file__).resolve().parent.parent
-REFS_DIR = ROOT / "refs"
-FICHE_DIR = REFS_DIR / "fiches_taches"
-TEMPLATE_NAME = "modele_fiche_tache.md"
+from automation.task_sheet import TaskSheetData, create_task_sheet
 
 
 def prompt_line(question: str, required: bool = True, default: str | None = None) -> str:
@@ -42,31 +36,9 @@ def prompt_multiline(question: str) -> list[str]:
     return lines
 
 
-def bullet_block(items: list[str]) -> str:
-    """Formate une liste en bloc Markdown à puces."""
-    if not items:
-        return "- Aucun point précisé pour l'instant."
-    return "\n".join(f"- {item.strip()}" for item in items if item.strip()) or "- Aucun point précisé pour l'instant."
-
-
-def numbered_block(items: list[str]) -> str:
-    """Formate une liste en bloc Markdown numéroté."""
-    if not items:
-        return "1. À détailler."
-    return "\n".join(f"{idx}. {item.strip()}" for idx, item in enumerate(items, start=1) if item.strip()) or "1. À détailler."
-
-
-def slugify(value: str) -> str:
-    """Transforme un libellé en slug utilisable dans un nom de fichier."""
-    value = value.lower()
-    value = re.sub(r"[^\w\s-]", "", value, flags=re.ASCII)
-    value = re.sub(r"[-\s]+", "-", value, flags=re.ASCII).strip("-")
-    return value or "fiche-tache"
-
-
 def ensure_directories() -> None:
     """Crée les répertoires nécessaires."""
-    FICHE_DIR.mkdir(parents=True, exist_ok=True)
+    (Path(__file__).resolve().parent.parent / "refs" / "fiches_taches").mkdir(parents=True, exist_ok=True)
 
 
 def main() -> None:
@@ -108,72 +80,35 @@ def main() -> None:
     next_action = prompt_line("Prochaine action à engager", required=False, default="À définir")
     linked_docs = prompt_multiline("Documents liés (chemins dans `refs/` ou externes)")
 
-    timestamp = datetime.now().strftime("%Y-%m-%d")
-    slug = slugify(task_name)
-    filename = FICHE_DIR / f"{timestamp}-{slug}.md"
+    data = TaskSheetData(
+        phase=phase,
+        task_name=task_name,
+        responsable=responsable,
+        frequency=frequency,
+        duration=duration,
+        objective=objective,
+        trigger=trigger,
+        steps=steps,
+        data_needed=data_needed,
+        docs_needed=docs_needed,
+        tools_needed=tools_needed,
+        outputs=outputs,
+        formats=formats,
+        recipients=recipients,
+        pains=pains,
+        automation_ideas=automation_raw,
+        automation_type=automation_type,
+        automation_prereq=automation_prereq,
+        automation_effort=automation_effort,
+        automation_benefits=automation_benefits,
+        priority=priority,
+        status=status,
+        next_action=next_action,
+        linked_docs=linked_docs,
+    )
 
-    content = f"""# Fiche tâche — {task_name}
-
-> Phase : **{phase}** · Dernière mise à jour : {timestamp}
-
-## Informations générales
-
-- **Phase MOE** : {phase}
-- **Intitulé de la tâche** : {task_name}
-- **Responsable / intervenants** : {responsable}
-- **Fréquence** : {frequency}
-- **Durée estimée** : {duration}
-
-## Description
-
-- **Objectif** : {objective}
-- **Déclencheur** : {trigger}
-- **Étapes principales** :
-{indent(numbered_block(steps), '  ')}
-
-## Entrées / ressources nécessaires
-
-- **Données** :
-{indent(bullet_block(data_needed), '  ')}
-- **Documents de référence** :
-{indent(bullet_block(docs_needed), '  ')}
-- **Logiciels / outils** :
-{indent(bullet_block(tools_needed), '  ')}
-
-## Sorties attendues
-
-- **Livrables** :
-{indent(bullet_block(outputs), '  ')}
-- **Formats** :
-{indent(bullet_block(formats), '  ')}
-- **Destinataires / diffusion** :
-{indent(bullet_block(recipients), '  ')}
-
-## Points de douleur actuels
-
-{bullet_block(pains)}
-
-## Pistes d'automatisation
-
-- **Idées / solutions** :
-{indent(bullet_block(automation_raw), '  ')}
-- **Type** : {automation_type}
-- **Pré-requis** : {automation_prereq}
-- **Niveau d'effort** : {automation_effort}
-- **Bénéfices attendus** :
-{indent(bullet_block(automation_benefits), '  ')}
-
-## État et priorisation
-
-- **Priorité** : {priority}
-- **Statut** : {status}
-- **Prochaine action** : {next_action}
-- **Documents liés** :
-{indent(bullet_block(linked_docs), '  ')}
-"""
-
-    filename.write_text(content.strip() + "\n", encoding="utf-8")
-    print(f"\n✅ Fiche créée : {filename.relative_to(ROOT)}")
+    filepath = create_task_sheet(data)
+    print(f"\n✅ Fiche créée : {filepath.relative_to(Path(__file__).resolve().parent.parent)}")
 
 
 if __name__ == "__main__":

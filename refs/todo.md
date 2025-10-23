@@ -11,6 +11,7 @@
 
 ## Finalisé
 
+- [x] Interface web locale pour la saisie (app.py + templates).
 - [x] Assistant de création de fiches (`scripts/create_task_sheet.py`).
 - [x] Modèle de fiche tâche en Markdown (`refs/modele_fiche_tache.md`).
 - [x] Extraction du PDF et synthèse Markdown (`refs/phases_taches.md`).
