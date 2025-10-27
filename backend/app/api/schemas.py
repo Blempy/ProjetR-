@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class TokenResponse(BaseModel):
@@ -80,3 +80,31 @@ class TaskSheetListItem(BaseModel):
     phase: str
     path: str
     updated_at: Optional[str] = None
+
+
+class AgentAttachment(BaseModel):
+    kind: str | None = None
+    value: Any = None
+    meta: dict[str, Any] | None = None
+
+
+class AgentMessage(BaseModel):
+    type: str
+    content: Any | None = None
+    attachments: list[AgentAttachment] = Field(default_factory=list)
+
+
+class AgentRouteRequest(BaseModel):
+    session_id: str
+    caller: str
+    turn: int | None = None
+    message: AgentMessage
+    context: dict[str, Any] | None = None
+
+
+class AgentRouteResponse(BaseModel):
+    session_id: str
+    next_agent: str
+    actions: list[dict[str, Any]] = Field(default_factory=list)
+    notes: str | None = None
+    registry_version: int | None = None

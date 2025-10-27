@@ -42,3 +42,73 @@ Orchestrateur général
 ---
 
 *Mise à jour : 2025-10-27 — structure initiale validée par Blempy. Ajuster à mesure des besoins.*
+
+## 5. Schéma d’échange (draft 2025-10-27)
+
+```json
+{
+  "session_id": "uuid",
+  "turn": 3,
+  "caller": "orchestrator|welcome|clarification|specialist|summary",
+  "message": {
+    "type": "user_request|follow_up|context|action_plan|response|error",
+    "content": "Texte libre ou structure selon le type",
+    "attachments": [
+      {
+        "kind": "doc_ref|file_path|extracted_data",
+        "value": "refs/fiches_taches/....md",
+        "meta": {}
+      }
+    ]
+  },
+  "routing": {
+    "target": "clarification|context|specialist:<slug>|summary",
+    "reason": "Pourquoi on choisit cet agent",
+    "confidence": 0.0
+  },
+  "context": {
+    "user": {
+      "role": "staff|user",
+      "project": "Nom projet",
+      "language": "fr"
+    },
+    "history": [
+      {
+        "speaker": "user|agent",
+        "type": "user_request|response|note",
+        "content": "Derniers messages condensés",
+        "timestamp": "ISO8601"
+      }
+    ],
+    "references": [
+      "refs/fiches_taches/2025-10-27-....md",
+      "docs/agents/....md"
+    ]
+  },
+  "actions": [
+    {
+      "type": "fetch_document|run_script|ask_followup",
+      "payload": {
+        "path": "docs/agents/...md",
+        "query": "ex: coordonnées EPSG ?"
+      },
+      "status": "pending|done|failed",
+      "result": "résultat éventuel"
+    }
+  ],
+  "meta": {
+    "timestamp": "ISO8601",
+    "version": "0.1.0",
+    "notes": "incohérences ou TODO"
+  }
+}
+```
+
+### Règles clés
+
+- `session_id` conserve le fil ; `turn` incrémente à chaque échange orchestrateur ↔ agents.
+- `caller` indique quel agent parle, `routing.target` où la requête doit aller juste après.
+- `message.type` pilote les champs attendus (ex. `action_plan` contiendra une liste de tâches horodatées).
+- `context.history` est limité à 10 entrées condensées ; l’orchestrateur doit gérer le résumé.
+- `actions` trace les opérations déclenchées (lecture fiches, extraction, exécution script) pour audit.
+- `meta.version` permet d’évoluer sans casser la compatibilité (contrôlée par orchestrateur).
