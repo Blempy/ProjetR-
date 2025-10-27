@@ -14,9 +14,9 @@
 
 ### Interfaces web
 
-- [ ] Concevoir une interface « utilisateur final » distincte, centrée sur les automatisations (notes, pain points, etc.).
-- [ ] Isoler l’interface de création de fiches tâches dans un espace privé / administrateur.
-- [ ] Mettre en place un mécanisme d’accès (auth ou protection simple) pour l’interface privée.
+- [x] Concevoir une interface « utilisateur final » distincte, centrée sur les automatisations (notes, points de douleur, etc.).
+- [x] Isoler l’interface de création de fiches tâches dans un espace privé / administrateur.
+- [x] Mettre en place un mécanisme d’accès (auth ou protection simple) pour l’interface privée.
 
 ### Migration FastAPI + React
 

@@ -30,7 +30,7 @@ Le script pose une série de questions et crée automatiquement un fichier Markd
 ## Plateforme FastAPI + React
 
 - **Backend** : voir `backend/README.md` (FastAPI, Uvicorn, auth staff, endpoints `/api`, création fiches + points de douleur).
-- **Frontend** : voir `frontend/README.md` (React + Vite, portails utilisateur et staff).
+- **Frontend** : voir `frontend/README.md` (React + Vite, portails public et staff).
 - Gestion des comptes staff : `scripts/manage_staff_users.py --password ...` (hashage bcrypt dans `config/staff_users.json`).
 
 ### Lancer l’environnement de développement
@@ -46,6 +46,11 @@ npm run dev
 ```
 
 Naviguer ensuite sur <http://127.0.0.1:5173>.
+
+Routes utiles :
+
+- `/user` : portail utilisateur (soumettre une fiche ou un point de douleur).
+- `/staff/login` → `/staff/dashboard` : portail staff protégé (gestion interne).
 
 > Roadmap détaillée : `docs/migration_fastapi_react.md`. Retrait de l’ancienne app Flask : `docs/retire_flask.md`.
 

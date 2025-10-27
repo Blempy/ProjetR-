@@ -113,3 +113,17 @@ Ce fichier sert à tracer les interventions de l’agent (assistant IA) sur le p
 - **Todo / suivi** :
   - [ ] Définir la stratégie de tests (unitaires + end-to-end) pour la nouvelle stack.
   - [ ] Migrer les formulaires “utilisateur final” (notes de calcul, etc.) dans le portail React.
+
+### 2025-10-27 — Session #5
+- **Participants** : Blempy, IA
+- **Objectifs** :
+  - Ouvrir le portail « utilisateur » public sur React pour collecter fiches tâches et points de douleur.
+  - Référencer les nouvelles routes et mettre à jour la documentation associée.
+- **Actions réalisées** :
+  - Ajout des pages `UserTaskSheetForm` et `UserPainPointForm` (React) + mise à jour du `UserPortal`.
+  - Routing React étendu (`/user/task-sheets/new`, `/user/pain-points/new`).
+  - README complété (instructions backend/frontend, routes), todo/migration ajustées.
+- **Fichiers modifiés / créés** : `frontend/src/App.tsx`, `frontend/src/pages/UserPortal.tsx`, `frontend/src/pages/UserTaskSheetForm.tsx`, `frontend/src/pages/UserPainPointForm.tsx`, `README.md`.
+- **Todo / suivi** :
+  - [ ] Intégrer le futur assistant notes de calcul côté utilisateur.
+  - [ ] Ajouter des validations/formats (ex : listes déroulantes) pour les formulaires publics.

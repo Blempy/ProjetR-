@@ -98,6 +98,7 @@
 - [ ] Définir un plan de tests (unitaires + end-to-end).
 - [x] Migrer la création de fiches tâches vers l'API + React (staff).
 - [x] Migrer la saisie des points de douleur vers l'API + React.
+- [x] Ouvrir le portail utilisateur public (soumission fiches / points de douleur).
 
 ---
 
