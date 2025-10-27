@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { createTaskSheet } from "../api/taskSheets";
+import { PHASE_OPTIONS, PRIORITY_OPTIONS, STATUS_OPTIONS } from "../constants/formOptions";
 
 function splitLines(value: string): string[] {
   return value
@@ -9,12 +10,12 @@ function splitLines(value: string): string[] {
 }
 
 export default function UserTaskSheetForm() {
-  const [phase, setPhase] = useState("");
+  const [phase, setPhase] = useState(PHASE_OPTIONS[0]);
   const [taskName, setTaskName] = useState("");
   const [objective, setObjective] = useState("");
   const [steps, setSteps] = useState("");
-  const [status, setStatus] = useState("À qualifier");
-  const [priority, setPriority] = useState("À qualifier");
+  const [status, setStatus] = useState(STATUS_OPTIONS[0]);
+  const [priority, setPriority] = useState(PRIORITY_OPTIONS[1]);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -26,25 +27,32 @@ export default function UserTaskSheetForm() {
     setLoading(true);
 
     try {
+      const trimmedObjective = objective.trim();
+      if (trimmedObjective.length < 10) {
+        throw new Error("L'objectif doit comporter au moins 10 caractères.");
+      }
+
       const payload = {
         phase,
-        task_name: taskName,
-        objective,
+        task_name: taskName.trim(),
+        objective: trimmedObjective,
         steps: splitLines(steps),
         status,
         priority
       };
       const result = await createTaskSheet(payload);
       setMessage(`Fiche soumise. Chemin : ${result.path}`);
-      setPhase("");
+      setPhase(PHASE_OPTIONS[0]);
       setTaskName("");
       setObjective("");
       setSteps("");
-      setStatus("À qualifier");
-      setPriority("À qualifier");
+      setStatus(STATUS_OPTIONS[0]);
+      setPriority(PRIORITY_OPTIONS[1]);
     } catch (err) {
       console.error(err);
-      setError("Erreur lors de l'enregistrement de la fiche.");
+      setError(
+        err instanceof Error ? err.message : "Erreur lors de l'enregistrement de la fiche."
+      );
     } finally {
       setLoading(false);
     }
@@ -56,7 +64,13 @@ export default function UserTaskSheetForm() {
       <form onSubmit={handleSubmit} className="card form">
         <label>
           Phase MOE
-          <input value={phase} onChange={(e) => setPhase(e.target.value)} required />
+          <select value={phase} onChange={(e) => setPhase(e.target.value)} required>
+            {PHASE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Intitulé de la tâche
@@ -72,11 +86,23 @@ export default function UserTaskSheetForm() {
         </label>
         <label>
           Statut suggéré
-          <input value={status} onChange={(e) => setStatus(e.target.value)} />
+          <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            {STATUS_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Priorité suggérée
-          <input value={priority} onChange={(e) => setPriority(e.target.value)} />
+          <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+            {PRIORITY_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
 
         {error && <p className="error">{error}</p>}

@@ -1,8 +1,9 @@
 import { FormEvent, useState } from "react";
 import { createPainPoint } from "../api/painPoints";
+import { PHASE_OPTIONS, SCORE_OPTIONS } from "../constants/formOptions";
 
 export default function UserPainPointForm() {
-  const [phase, setPhase] = useState("");
+  const [phase, setPhase] = useState(PHASE_OPTIONS[0]);
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
   const [frequency, setFrequency] = useState(3);
@@ -22,20 +23,25 @@ export default function UserPainPointForm() {
     setLoading(true);
 
     try {
+      const trimmedDescription = description.trim();
+      if (trimmedDescription.length < 10) {
+        throw new Error("La description doit comporter au moins 10 caractères.");
+      }
+
       const payload = {
         phase,
-        task,
-        description,
+        task: task.trim(),
+        description: trimmedDescription,
         frequency,
         duration,
         impact,
         stress,
-        automation_idea: automationIdea,
-        comments
+        automation_idea: automationIdea.trim(),
+        comments: comments.trim()
       };
       const result = await createPainPoint(payload);
       setMessage(`Point de douleur enregistré : ${result.path}`);
-      setPhase("");
+      setPhase(PHASE_OPTIONS[0]);
       setTask("");
       setDescription("");
       setFrequency(3);
@@ -46,7 +52,9 @@ export default function UserPainPointForm() {
       setComments("");
     } catch (err) {
       console.error(err);
-      setError("Erreur lors de l'enregistrement.");
+      setError(
+        err instanceof Error ? err.message : "Erreur lors de l'enregistrement."
+      );
     } finally {
       setLoading(false);
     }
@@ -58,7 +66,13 @@ export default function UserPainPointForm() {
       <form onSubmit={handleSubmit} className="card form">
         <label>
           Phase
-          <input value={phase} onChange={(e) => setPhase(e.target.value)} required />
+          <select value={phase} onChange={(e) => setPhase(e.target.value)} required>
+            {PHASE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Tâche concernée
@@ -70,47 +84,43 @@ export default function UserPainPointForm() {
         </label>
         <label>
           Fréquence (1-5)
-          <input
-            type="number"
-            min={1}
-            max={5}
-            value={frequency}
-            onChange={(e) => setFrequency(Number(e.target.value))}
-            required
-          />
+          <select value={frequency} onChange={(e) => setFrequency(Number(e.target.value))} required>
+            {SCORE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Durée / charge (1-5)
-          <input
-            type="number"
-            min={1}
-            max={5}
-            value={duration}
-            onChange={(e) => setDuration(Number(e.target.value))}
-            required
-          />
+          <select value={duration} onChange={(e) => setDuration(Number(e.target.value))} required>
+            {SCORE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Impact (1-5)
-          <input
-            type="number"
-            min={1}
-            max={5}
-            value={impact}
-            onChange={(e) => setImpact(Number(e.target.value))}
-            required
-          />
+          <select value={impact} onChange={(e) => setImpact(Number(e.target.value))} required>
+            {SCORE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Stress / complexité (1-5)
-          <input
-            type="number"
-            min={1}
-            max={5}
-            value={stress}
-            onChange={(e) => setStress(Number(e.target.value))}
-            required
-          />
+          <select value={stress} onChange={(e) => setStress(Number(e.target.value))} required>
+            {SCORE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Idée d'automatisation

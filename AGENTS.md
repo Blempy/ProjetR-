@@ -126,4 +126,4 @@ Ce fichier sert à tracer les interventions de l’agent (assistant IA) sur le p
 - **Fichiers modifiés / créés** : `frontend/src/App.tsx`, `frontend/src/pages/UserPortal.tsx`, `frontend/src/pages/UserTaskSheetForm.tsx`, `frontend/src/pages/UserPainPointForm.tsx`, `README.md`.
 - **Todo / suivi** :
   - [ ] Intégrer le futur assistant notes de calcul côté utilisateur.
-  - [ ] Ajouter des validations/formats (ex : listes déroulantes) pour les formulaires publics.
+  - [x] Ajouter des validations/formats (ex : listes déroulantes) pour les formulaires publics.
