@@ -13,6 +13,11 @@
 - [ ] Préparer une future feature : extraction automatique des surfaces (AutoCAD/Covadis/Mensura) pour alimenter la saisie.
 - [ ] Confirmer les sources officielles des pluies de projet utilisables (Montana, données locales, etc.).
 - [ ] Standardiser le format Covadis/Mensura attendu pour les exports (colonnes, identifiants, unités).
+- [ ] Structurer les paramètres dans `config/ep/coefficients.json` et `config/ep/pluies.json`.
+- [ ] Créer le template Excel `templates/excel/note_ep.xlsx` avec les onglets Paramètres/Surfaces/Collecteurs/Autocurage/Synthèse.
+- [ ] Implémenter le moteur de calcul (rational/Caquot + autocurage) dans un module Python testé.
+- [ ] Exposer l’API FastAPI `POST /api/ep/calc` qui renvoie les résultats et génère l’Excel.
+- [ ] Concevoir le formulaire React multi-étapes pour la saisie EP (projet, pluies, surfaces, collecteurs).
 
 ### Interfaces web
 

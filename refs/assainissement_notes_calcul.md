@@ -135,4 +135,108 @@ où :
 
 ---
 
-*Dernière mise à jour : 2025-10-25 — compléter au fur et à mesure des retours terrain.*
+*Dernière mise à jour : 2025-10-27 — compléter au fur et à mesure des retours terrain.*
+
+## 8. Architecture cible (draft 2025-10-27)
+
+### 8.1 Vue d’ensemble
+
+```
+Frontend React (assistant EP)
+  → API FastAPI /calcul-ep
+      ├─ Ingestion paramètres (pluies, coefficients, débits)
+      ├─ Calcul hydrologique (méthode rationnelle / Caquot)
+      ├─ Vérification réseau (Manning, autocurage)
+      ├─ Génération livrables (Excel + PDF + JSON résumé)
+      └─ Registry versions (paramètres, hypothèses)
+  → Stockage projet (exports/<projet>/EP_<date>)
+```
+
+### 8.2 Modules prévus
+
+| Module | Description | Technologies envisagées |
+| --- | --- | --- |
+| **Assistant React** | Formulaire multi-étapes (Projet, Pluies, Surfaces, Collecteurs, Export). Gestion du tableau de surfaces et import CSV. | React + React Hook Form + Zustand/Context. |
+| **API `/calcul-ep`** | Endpoint POST recevant le JSON de saisie, renvoyant résultats + chemins de livrables. | FastAPI, Pydantic. |
+| **Engine hydrologique** | Fonctions Python pour calculs surfaces pondérées, débits (Rationnelle/Caquot), volumes, diamètres, vitesses. | NumPy léger ou pur Python. |
+| **Paramètres de référence** | Service chargeant coefficients/pluies depuis `config/ep/*.json` (versionnés). | Pydantic, JSON/YAML. |
+| **Génération Excel** | Template `templates/excel/note_ep.xlsx` renseigné via `openpyxl` (phase 1). | openpyxl / xlsxwriter. |
+| **Export PDF** | Conversion Excel → PDF (LibreOffice headless) ou HTML → PDF (phase 2). | LibreOffice ou WeasyPrint. |
+| **Journalisation** | Export JSON synthèse + entrée dans la mémoire orchestrateur. | JSON + contrôleur mémoire. |
+
+### 8.3 Schéma de données (entrée API)
+
+```json
+{
+  "project": {
+    "name": "ZAC XYZ",
+    "commune": "Ville",
+    "reference": "EP-2025-001"
+  },
+  "rain": {
+    "method": "montana",
+    "a": 58.1,
+    "b": 18.2,
+    "c": 0.78,
+    "return_period": "10 ans"
+  },
+  "surfaces": [
+    {
+      "label": "Chaussée principale",
+      "area_m2": 4500,
+      "coefficient": 0.9,
+      "drains_to": "T1"
+    }
+  ],
+  "collectors": [
+    {
+      "id": "T1",
+      "length_m": 120,
+      "slope_percent": 0.6,
+      "diameter_existing_mm": 315,
+      "connected_surfaces": ["Chaussée principale"],
+      "roughness_n": 0.013
+    }
+  ],
+  "constraints": {
+    "discharge_limit_lps_ha": 5,
+    "safety_factor": 1.1,
+    "min_velocity_ms": 0.6,
+    "max_velocity_ms": 3.0
+  }
+}
+```
+
+### 8.4 Calculs attendus
+
+1. Agrégation surfaces pondérées (`A_effective = Σ area × coeff`).  
+2. Intensité pluie via loi de Montana (en fonction du temps de concentration).  
+3. Débit `Qin = C × i × A`.  
+4. Débit de fuite `Qf = min(Qin, seuil collectivité)`.  
+5. Volume bassin `(Qin - Qf) × tc`.  
+6. Diamètre recommandé (Caquot + vérification Manning).  
+7. Autocurage : vitesses, h/D, comparatif `Qps / Qdim`.  
+8. Synthèse : conformité (OK/KO), hypothèses, marges.
+
+### 8.5 Livrables générés
+
+| Fichier | Contenu |
+| --- | --- |
+| `exports/<projet>/EP_<AAAA-MM-JJ>.xlsx` | Onglets Paramètres, Surfaces, Collecteurs, Autocurage, Synthèse. |
+| `exports/<projet>/EP_<AAAA-MM-JJ>.json` | Résumé structuré des calculs (pour mémoire/orchestrateur). |
+| `exports/<projet>/EP_<AAAA-MM-JJ>.pdf` | Optionnel (phase 2), version prête à diffusion. |
+
+### 8.6 Roadmap proposée
+
+1. **Sprint 1**  
+   - Finaliser bibliothèques de paramètres (`config/ep/coefficients.json`, `pluies.json`).  
+   - Créer le template Excel (onglets structurés, formules placeholders).  
+   - Implémenter le moteur de calcul Python + tests unitaires.
+2. **Sprint 2**  
+   - Exposer l’API FastAPI (`POST /api/ep/calc`).  
+   - Générer l’Excel et renvoyer JSON + fichier téléchargeable.  
+   - Créer le formulaire React (saisie surfaces, constraints).  
+3. **Sprint 3**  
+   - Export PDF / liaison Word.  
+   - Script d’import AutoCAD/Covadis vers JSON surfaces.  
+  - Intégration orchestrateur (agent spécialiste EP) + mémoire cache.
