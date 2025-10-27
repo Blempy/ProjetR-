@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchTaskSheets, TaskSheetListItem } from "../api/taskSheets";
+import { useNavigate } from "react-router-dom";
 
 export default function StaffTaskSheetList() {
+  const navigate = useNavigate();
   const [items, setItems] = useState<TaskSheetListItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -67,6 +69,13 @@ export default function StaffTaskSheetList() {
           ))}
         </tbody>
       </table>
+      <button
+        type="button"
+        className="secondary"
+        onClick={() => navigate("/staff/dashboard")}
+      >
+        Retour
+      </button>
     </div>
   );
 }

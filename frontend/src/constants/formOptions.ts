@@ -13,3 +13,11 @@ export const STATUS_OPTIONS = ["À lancer", "En cours", "En test", "Déployé"];
 export const PRIORITY_OPTIONS = ["Haute", "Moyenne", "Basse"];
 
 export const SCORE_OPTIONS = [1, 2, 3, 4, 5];
+
+export const FREQUENCY_OPTIONS = [
+  "À chaque projet",
+  "Ponctuel",
+  "Hebdomadaire",
+  "Mensuel",
+  "Annuel"
+];
