@@ -123,7 +123,7 @@ Ce fichier sert à tracer les interventions de l’agent (assistant IA) sur le p
   - Ajout des pages `UserTaskSheetForm` et `UserPainPointForm` (React) + mise à jour du `UserPortal`.
   - Routing React étendu (`/user/task-sheets/new`, `/user/pain-points/new`).
   - README complété (instructions backend/frontend, routes), todo/migration ajustées.
-  - Ajout de boutons « Retour » et validations (listes déroulantes) pour les formulaires publics et staff.
+  - Ajout de boutons « Retour », validations (listes déroulantes) et barre de navigation persistante.
 - **Fichiers modifiés / créés** : `frontend/src/App.tsx`, `frontend/src/pages/UserPortal.tsx`, `frontend/src/pages/UserTaskSheetForm.tsx`, `frontend/src/pages/UserPainPointForm.tsx`, `README.md`.
 - **Todo / suivi** :
   - [ ] Intégrer le futur assistant notes de calcul côté utilisateur.

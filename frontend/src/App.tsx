@@ -7,6 +7,7 @@ import StaffDashboard from "./pages/StaffDashboard";
 import StaffTaskSheetForm from "./pages/StaffTaskSheetForm";
 import StaffPainPointForm from "./pages/StaffPainPointForm";
 import ProtectedRoute from "./components/ProtectedRoute";
+import NavBar from "./components/NavBar";
 
 function Home() {
   return (
@@ -22,36 +23,41 @@ function Home() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="user" element={<UserPortal />} />
-      <Route path="user/task-sheets/new" element={<UserTaskSheetForm />} />
-      <Route path="user/pain-points/new" element={<UserPainPointForm />} />
-      <Route path="staff/login" element={<StaffLogin />} />
-      <Route
-        path="staff/dashboard"
-        element={
-          <ProtectedRoute>
-            <StaffDashboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="staff/task-sheets/new"
-        element={
-          <ProtectedRoute>
-            <StaffTaskSheetForm />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="staff/pain-points/new"
-        element={
-          <ProtectedRoute>
-            <StaffPainPointForm />
-          </ProtectedRoute>
-        }
-      />
-    </Routes>
+    <>
+      <NavBar />
+      <main className="app-body">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="user" element={<UserPortal />} />
+          <Route path="user/task-sheets/new" element={<UserTaskSheetForm />} />
+          <Route path="user/pain-points/new" element={<UserPainPointForm />} />
+          <Route path="staff/login" element={<StaffLogin />} />
+          <Route
+            path="staff/dashboard"
+            element={
+              <ProtectedRoute>
+                <StaffDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="staff/task-sheets/new"
+            element={
+              <ProtectedRoute>
+                <StaffTaskSheetForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="staff/pain-points/new"
+            element={
+              <ProtectedRoute>
+                <StaffPainPointForm />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </main>
+    </>
   );
 }
