@@ -7,6 +7,7 @@ Orchestrateur général
 ├── Agent d’accueil / front (dialogue utilisateur)
 │   ├── Agent Clarification (reformulation)
 │   └── Agent de compréhension du contexte (lecture docs)
+├── Agent Contrôleur / Mémoire (interception, cache)
 ├── Agent de sélection / dispatch (router vers spécialistes)
 │   └── Agents spécialistes (VRD, SIG, Budget, etc.)
 └── Agent Synthèse / Explicatif (réponse finale)
@@ -20,6 +21,7 @@ Orchestrateur général
 | **Agent d’accueil / front** | Interlocuteur principal, garde le ton, transmet. | Dialogue utilisateur, baton relais avec Clarification/Synthèse. |
 | **Agent Clarification** | Reformule, détecte ambiguïtés, pose questions. | Interagit avec accueil + agent contexte. |
 | **Agent de compréhension du contexte** | Va lire fiches/docs/todo, synthétise. | Fournit un résumé actionable aux autres. |
+| **Agent Contrôleur / Mémoire** | Vérifie si la réponse existe déjà dans la base locale, sinon laisse passer vers les LLM. | Dialogue avec Orchestrateur, renvoie `respond_from_memory`, alimente la base des connaissances. |
 | **Agent de sélection / dispatch** | Choisit le(s) spécialiste(s) pertinent(s), gère l’ordre. | Reçoit demande clarifiée + contexte, dialogue avec spécialistes. |
 | **Agents spécialistes** (Architecture, SIG, VRD, Budget, etc.) | Comprennent leur domaine, proposent plan d’action. | Coopèrent d’un agent à l’autre, renvoient vers Synthèse. |
 | **Agent Synthèse / Explicatif** | Agrège, explique la réponse finale. | Rassemble les sorties et répond via agent d’accueil. |

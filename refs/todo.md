@@ -83,6 +83,8 @@
 - [ ] Générer une version JSON/YAML des briefs `docs/agents/*.md` pour chargement automatique par le backend.
 - [ ] Prototyper un endpoint FastAPI `/api/agents/route` qui appelle l’orchestrateur avec une requête utilisateur.
 - [ ] Définir un plan de tests (unitaires + scénarios de bout en bout) pour valider les enchaînements d’agents.
+- [ ] Implémenter le contrôleur/mémoire (`KnowledgeBase`) et brancher la recherche de similarité.
+- [ ] Ajouter un adaptateur embeddings (OpenAI) et un mécanisme de cache des réponses validées.
 
 ### Migration FastAPI + React
 
