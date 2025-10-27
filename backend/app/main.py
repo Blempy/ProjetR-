@@ -3,7 +3,7 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .api import agents, auth, public, staff
+from .api import agents, auth, ep, public, staff
 from .core.settings import get_settings
 
 
@@ -23,6 +23,7 @@ def create_app() -> FastAPI:
     app.include_router(auth.router, prefix=settings.api_prefix)
     app.include_router(staff.router, prefix=settings.api_prefix)
     app.include_router(agents.router, prefix=settings.api_prefix)
+    app.include_router(ep.router, prefix=settings.api_prefix)
 
     return app
 
