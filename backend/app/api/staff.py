@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+from datetime import datetime
 from pathlib import Path
+import re
 
 from fastapi import APIRouter, Depends
 
@@ -12,11 +14,60 @@ from .schemas import (
     TaskSheetResponse,
     PainPointCreate,
     PainPointResponse,
+    TaskSheetListItem,
 )
-from automation.task_sheet import TaskSheetData, create_task_sheet
+from automation.task_sheet import TaskSheetData, create_task_sheet, FICHE_DIR
 from automation.pain_points import PainPointEntry, record_pain_point
 
 router = APIRouter(prefix="/staff", tags=["staff"])
+
+
+def _extract_summary(path: Path) -> TaskSheetListItem:
+    title = ""
+    phase = ""
+    updated_at: str | None = None
+
+    title_pattern = re.compile(r"#\s*Fiche tâche\s*—\s*(.+)")
+    phase_pattern = re.compile(r">\s*Phase\s*:\s*\*\*(.+?)\*\*")
+    updated_pattern = re.compile(r"Dernière mise à jour\s*:\s*(\d{4}-\d{2}-\d{2})")
+
+    try:
+        with path.open("r", encoding="utf-8") as fh:
+            for line in fh:
+                if not title:
+                    match = title_pattern.match(line)
+                    if match:
+                        title = match.group(1).strip()
+                        continue
+                if not phase:
+                    match = phase_pattern.search(line)
+                    if match:
+                        phase = match.group(1).strip()
+                if updated_at is None:
+                    match = updated_pattern.search(line)
+                    if match:
+                        updated_at = match.group(1)
+                if title and phase and updated_at:
+                    break
+    except OSError:
+        pass
+
+    if not title:
+        title = path.stem
+    if not updated_at:
+        updated_at = datetime.fromtimestamp(path.stat().st_mtime).strftime("%Y-%m-%d")
+
+    try:
+        rel_path = path.relative_to(Path.cwd())
+    except ValueError:
+        rel_path = path
+
+    return TaskSheetListItem(
+        task_name=title,
+        phase=phase,
+        path=str(rel_path),
+        updated_at=updated_at,
+    )
 
 
 @router.get("/profile", response_model=UserProfile, summary="Informations utilisateur connecté")
@@ -91,3 +142,13 @@ async def create_pain_point_endpoint(
         relative_path = filepath
 
     return PainPointResponse(path=str(relative_path), phase=entry.phase, task=entry.task)
+
+
+@router.get("/task-sheets", response_model=list[TaskSheetListItem], summary="Lister les fiches tâches")
+async def list_task_sheets(user: StaffUser = Depends(get_staff_user)) -> list[TaskSheetListItem]:
+    if not FICHE_DIR.exists():
+        return []
+    summaries: list[TaskSheetListItem] = []
+    for file_path in sorted(FICHE_DIR.glob("*.md")):
+        summaries.append(_extract_summary(file_path))
+    return summaries

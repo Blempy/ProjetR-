@@ -121,3 +121,20 @@ button.secondary:hover {
   color: #047857;
   font-weight: 600;
 }
+
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.list-table th,
+.list-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.list-table tbody tr:hover {
+  background: #f1f5f9;
+}

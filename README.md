@@ -51,6 +51,7 @@ Routes utiles :
 
 - `/user` : portail utilisateur (soumettre une fiche ou un point de douleur).
 - `/staff/login` → `/staff/dashboard` : portail staff protégé (gestion interne).
+- `/staff/task-sheets` : consultation des fiches existantes (tableau).
 - Une barre de navigation fixe est accessible en haut de page pour basculer rapidement entre les espaces.
 
 > Roadmap détaillée : `docs/migration_fastapi_react.md`. Retrait de l’ancienne app Flask : `docs/retire_flask.md`.
