@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password_hash": "$2b$12$wAnExampleHashReplaceMe",
+      "roles": [
+        "admin"
+      ]
+    },
+    {
+      "username": "blempy",
+      "password_hash": "$2b$12$jMNbWuvxzqGyjocqyAxpjOOZZV/aWaRSw94GrQdSZj0bsNWS6kf2K",
+      "roles": [
+        "admin",
+        "staff"
+      ]
+    }
+  ]
+}

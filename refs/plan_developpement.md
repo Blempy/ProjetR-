@@ -56,6 +56,7 @@
 - Scripts/macro : AutoCAD (AutoLISP), VBA Office, Python (si pertinent), `scripts/create_task_sheet.py` (assistant fiches Markdown), `app.py` (interface web locale).
 - Tableaux de bord : suivi de projet (Excel ou Power BI/LibreOffice), diagrammes Gantt.
 - Guides : procédures pour lancer chaque automatisation, vidéos courtes (optionnel).
+- Migration stack web : `docs/migration_fastapi_react.md` (architecture cible).
 
 ## Prochaines étapes proposées
 
@@ -64,3 +65,4 @@
 3. Définir les priorités à court terme (ex. automatiser la mise en forme des pièces écrites).
 4. Établir un calendrier souple (sprints mensuels ou bimensuels).
 5. Documenter les outils et langages à privilégier (VBA, scripts AutoCAD, etc.).
+6. Structurer l'application web en deux espaces : interface utilisateur (automatisations) et interface privée (gestion des fiches/tasks).
