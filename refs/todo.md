@@ -25,6 +25,23 @@
 - [ ] Identifier les outils/scripts nécessaires (AutoCAD, Covadis, routines de conversion).
 - [ ] Définir une première automatisation cible (checklist + script de contrôle).
 
+### Automatisations thèmes transverses (modules 01 → 12)
+
+- [ ] `2025-10-27-architecture-fonctionnelle-du-projet.md` : générer automatiquement la cartographie des blocs (diagrammes + documentation) à partir d’un référentiel YAML/JSON.
+- [ ] `2025-10-27-definition-du-besoin-cahier-des-charges.md` : créer un assistant de collecte (formulaire) et générateur de cahier des charges en Markdown/Word.
+- [ ] `2025-10-27-mise-a-la-charte-graphique.md` : définir des scripts de validation (lint) sur plans/rapports pour garantir la charte graphique.
+- [ ] `2025-10-27-gestion-de-projet-et-versionning.md` : automatiser la création d’espaces projet (Git/Notion) et la synchronisation des statuts.
+- [ ] `2025-10-27-calculs-vrd.md` : connecter les moteurs de calcul aux fiches (imports quantitatifs + génération de tableaux).
+- [ ] `2025-10-27-gestion-des-donnees-de-terrain.md` : mettre en place une pipeline d’ingestion terrain (imports DXF → base normalisée + géoréférencement).
+- [ ] `2025-10-27-generation-de-rapports-et-livrables.md` : industrialiser la production des rapports (templates Word/PDF + scripts d’assemblage).
+- [ ] `2025-10-27-verification-normative.md` : développer une check-list automatisée (règles métiers + génération de rapport de conformité).
+- [ ] `2025-10-27-coordination-et-communication.md` : automatiser la diffusion des comptes-rendus / plans d’actions (emails + tableau de bord).
+- [ ] `2025-10-27-integration-sig.md` : scripts d’import/export SIG (shp/geojson) et synchronisation avec la base projet.
+- [ ] `2025-10-27-integration-de-donnees-publiques.md` : connecter les APIs publiques (cadastre, PLU) pour enrichir les dossiers.
+- [ ] `2025-10-27-cout-et-budgetisation-automatique.md` : relier les fiches de quantités à une base de prix pour produire des estimations automatiques.
+- [ ] `2025-10-27-compte-rendu-de-reunion.md` : générer des comptes rendus types avec reprise automatique des décisions/actions.
+- [ ] `2025-10-27-pilotage-a-distance-slack-webhook.md` : mettre en place un bot Slack/Webhook pour notifier les jalons et suivre les tâches.
+
 ### Migration FastAPI + React
 
 - [x] Valider l’architecture cible (`docs/migration_fastapi_react.md`) et la structure des dossiers `backend/` + `frontend/`.
