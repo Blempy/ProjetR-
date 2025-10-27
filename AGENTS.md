@@ -87,6 +87,7 @@ Ce fichier sert à tracer les interventions de l’agent (assistant IA) sur le p
   - Implémentation du contexte d’authentification React, pages `StaffDashboard`, `StaffTaskSheetForm`, `StaffPainPointForm`, formulaire de connexion.
   - Génération réussie d’une fiche via l’API (`refs/fiches_taches/2025-10-27-test-api-fiche.md`).
   - Saisie possible des points de douleur via l’interface staff (enregistrement Markdown dans `refs/points_douleur/`).
+  - Rédaction du plan de retrait de l’application Flask (`docs/retire_flask.md`).
   - Documentation mise à jour (`docs/migration_fastapi_react.md`, `README.md`, `backend/README.md`, `frontend/README.md`).
 - **Fichiers modifiés / créés** :
   - `backend/app/*`, `backend/requirements.txt`

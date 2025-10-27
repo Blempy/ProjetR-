@@ -57,6 +57,7 @@
 - Tableaux de bord : suivi de projet (Excel ou Power BI/LibreOffice), diagrammes Gantt.
 - Guides : procédures pour lancer chaque automatisation, vidéos courtes (optionnel).
 - Migration stack web : `docs/migration_fastapi_react.md` (architecture cible).
+- Retrait Flask : `docs/retire_flask.md` (étapes de désengagement de l'ancienne app).
 
 ## Prochaines étapes proposées
 
