@@ -18,6 +18,8 @@ L’API expose notamment :
 - `GET /api/health`
 - `POST /api/auth/login` (auth staff)
 - `GET /api/staff/profile` (protégé)
+- `POST /api/staff/task-sheets` (création fiches Markdown)
+- `POST /api/staff/pain-points` (journalisation points de douleur)
 
 ## Gestion des comptes staff
 

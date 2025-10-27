@@ -3,6 +3,7 @@ import UserPortal from "./pages/UserPortal";
 import StaffLogin from "./pages/StaffLogin";
 import StaffDashboard from "./pages/StaffDashboard";
 import StaffTaskSheetForm from "./pages/StaffTaskSheetForm";
+import StaffPainPointForm from "./pages/StaffPainPointForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function Home() {
@@ -36,6 +37,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <StaffTaskSheetForm />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="staff/pain-points/new"
+        element={
+          <ProtectedRoute>
+            <StaffPainPointForm />
           </ProtectedRoute>
         }
       />

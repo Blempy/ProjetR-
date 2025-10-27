@@ -83,9 +83,10 @@ Ce fichier sert à tracer les interventions de l’agent (assistant IA) sur le p
 - **Actions réalisées** :
   - Création des projets `backend/` (FastAPI) et `frontend/` (React + Vite + TypeScript).
   - Mise en place de l’authentification staff (JWT, gestion des mots de passe hashés, script `scripts/manage_staff_users.py`).
-  - Ajout des endpoints `/api/auth/login`, `/api/staff/profile`, `/api/staff/task-sheets`.
-  - Implémentation du contexte d’authentification React, pages `StaffDashboard`, `StaffTaskSheetForm`, formulaire de connexion.
+  - Ajout des endpoints `/api/auth/login`, `/api/staff/profile`, `/api/staff/task-sheets`, `/api/staff/pain-points`.
+  - Implémentation du contexte d’authentification React, pages `StaffDashboard`, `StaffTaskSheetForm`, `StaffPainPointForm`, formulaire de connexion.
   - Génération réussie d’une fiche via l’API (`refs/fiches_taches/2025-10-27-test-api-fiche.md`).
+  - Saisie possible des points de douleur via l’interface staff (enregistrement Markdown dans `refs/points_douleur/`).
   - Documentation mise à jour (`docs/migration_fastapi_react.md`, `README.md`, `backend/README.md`, `frontend/README.md`).
 - **Fichiers modifiés / créés** :
   - `backend/app/*`, `backend/requirements.txt`
@@ -94,6 +95,5 @@ Ce fichier sert à tracer les interventions de l’agent (assistant IA) sur le p
   - `refs/todo.md`, `docs/migration_fastapi_react.md`, `README.md`
   - `refs/fiches_taches/2025-10-27-test-api-fiche.md`
 - **Todo / suivi** :
-  - [ ] Migrer les points de douleur vers l’API + React.
   - [ ] Planifier le retrait progressif de l’appli Flask.
   - [ ] Définir la stratégie de tests (unitaires + end-to-end) pour la nouvelle stack.

@@ -96,6 +96,8 @@
 - [x] Mettre à jour `refs/todo.md` avec les tâches détaillées.
 - [x] Préparer un script d'ajout d'utilisateurs staff (hashage).
 - [ ] Définir un plan de tests (unitaires + end-to-end).
+- [x] Migrer la création de fiches tâches vers l'API + React (staff).
+- [x] Migrer la saisie des points de douleur vers l'API + React.
 
 ---
 

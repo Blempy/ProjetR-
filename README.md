@@ -43,8 +43,8 @@ Ouvrez ensuite <http://127.0.0.1:5000> dans votre navigateur. Deux formulaires s
 
 ### Migration FastAPI + React
 
-- **Backend** : voir `backend/README.md` (FastAPI, Uvicorn, auth staff, endpoints `/api`).
-- **Frontend** : voir `frontend/README.md` (React + Vite, context d'authentification, portail public/staff).
+- **Backend** : voir `backend/README.md` (FastAPI, Uvicorn, auth staff, endpoints `/api`, création fiches + points de douleur).
+- **Frontend** : voir `frontend/README.md` (React + Vite, context d'authentification, formulaires staff pour fiches et points de douleur).
 - Gestion des comptes staff : `scripts/manage_staff_users.py --password ...` (hashage bcrypt dans `config/staff_users.json`).
 
 > La roadmap détaillée est disponible dans `docs/migration_fastapi_react.md`.

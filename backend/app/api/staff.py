@@ -6,8 +6,15 @@ from fastapi import APIRouter, Depends
 
 from ..auth.deps import get_staff_user
 from ..auth.models import StaffUser
-from .schemas import UserProfile, TaskSheetCreate, TaskSheetResponse
+from .schemas import (
+    UserProfile,
+    TaskSheetCreate,
+    TaskSheetResponse,
+    PainPointCreate,
+    PainPointResponse,
+)
 from automation.task_sheet import TaskSheetData, create_task_sheet
+from automation.pain_points import PainPointEntry, record_pain_point
 
 router = APIRouter(prefix="/staff", tags=["staff"])
 
@@ -57,3 +64,30 @@ async def create_task_sheet_endpoint(
         relative_path = filepath
 
     return TaskSheetResponse(path=str(relative_path), task_name=data.task_name, phase=data.phase)
+
+
+@router.post("/pain-points", response_model=PainPointResponse, summary="Consigner un point de douleur")
+async def create_pain_point_endpoint(
+    payload: PainPointCreate,
+    user: StaffUser = Depends(get_staff_user),
+) -> PainPointResponse:
+    entry = PainPointEntry(
+        phase=payload.phase,
+        task=payload.task,
+        description=payload.description,
+        frequency=payload.frequency,
+        duration=payload.duration,
+        impact=payload.impact,
+        stress=payload.stress,
+        automation_idea=payload.automation_idea or "",
+        comments=payload.comments or "",
+    )
+
+    filepath = record_pain_point(entry)
+
+    try:
+        relative_path = filepath.relative_to(Path.cwd())
+    except ValueError:
+        relative_path = filepath
+
+    return PainPointResponse(path=str(relative_path), phase=entry.phase, task=entry.task)

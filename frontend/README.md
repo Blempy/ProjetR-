@@ -3,7 +3,7 @@
 Projet React (Vite + TypeScript) servant trois espaces :
 - Accueil général
 - Portail utilisateur final (formulaires automatisations)
-- Portail staff (gestion interne, nécessite authentification)
+- Portail staff (gestion interne, nécessite authentification : création de fiches, points de douleur)
 
 ## Installation
 
@@ -22,6 +22,6 @@ L’API FastAPI doit être disponible sur `http://127.0.0.1:8000` (proxy configu
 
 ## TODO
 
-- Formulaires dynamiques (notes de calcul, points de douleur)
-- Interface staff (création fiches, todo)
+- Formulaires dynamiques (notes de calcul)
+- Interface staff (suivi fiches, points de douleur, todo)
 - Interface utilisateur finale (tableaux, dashboards)

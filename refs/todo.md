@@ -25,7 +25,7 @@
 - [x] Préparer l’environnement frontend : initialisation React (Vite/CRA), routage public/staff.
 - [x] Implémenter l’authentification multi-comptes staff (hash + stockage sécurisé, portail React).
 - [x] Migrer la création de fiches tâches vers FastAPI + React (staff).
-- [ ] Migrer les points de douleur vers l’API + React.
+- [x] Migrer les points de douleur vers l’API + React.
 - [ ] Planifier le retrait progressif de Flask après validation.
 
 ### Backlog général

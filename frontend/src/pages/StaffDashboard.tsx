@@ -13,6 +13,7 @@ export default function StaffDashboard() {
           <p>Rôles : {user.roles.join(", ") || "aucun"}</p>
           <nav className="menu">
             <Link to="/staff/task-sheets/new">Nouvelle fiche tâche</Link>
+            <Link to="/staff/pain-points/new">Nouveau point de douleur</Link>
           </nav>
         </>
       ) : (

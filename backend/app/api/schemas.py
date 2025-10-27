@@ -44,3 +44,21 @@ class TaskSheetResponse(BaseModel):
     path: str
     task_name: str
     phase: str
+
+
+class PainPointCreate(BaseModel):
+    phase: str
+    task: str
+    description: str
+    frequency: int
+    duration: int
+    impact: int
+    stress: int
+    automation_idea: str | None = ""
+    comments: str | None = ""
+
+
+class PainPointResponse(BaseModel):
+    path: str
+    phase: str
+    task: str
