@@ -120,6 +120,13 @@ export default function StaffTaskSheetForm() {
         <button type="submit" disabled={loading}>
           {loading ? "Enregistrement..." : "Créer la fiche"}
         </button>
+        <button
+          type="button"
+          className="secondary"
+          onClick={() => navigate("/staff/dashboard")}
+        >
+          Retour
+        </button>
       </form>
     </div>
   );

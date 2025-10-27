@@ -1,8 +1,10 @@
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createPainPoint } from "../api/painPoints";
 import { PHASE_OPTIONS, SCORE_OPTIONS } from "../constants/formOptions";
 
 export default function UserPainPointForm() {
+  const navigate = useNavigate();
   const [phase, setPhase] = useState(PHASE_OPTIONS[0]);
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
@@ -136,6 +138,13 @@ export default function UserPainPointForm() {
 
         <button type="submit" disabled={loading}>
           {loading ? "Envoi..." : "Soumettre"}
+        </button>
+        <button
+          type="button"
+          className="secondary"
+          onClick={() => navigate("/user")}
+        >
+          Retour
         </button>
       </form>
     </div>

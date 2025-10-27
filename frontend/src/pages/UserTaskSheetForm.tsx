@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createTaskSheet } from "../api/taskSheets";
 import { PHASE_OPTIONS, PRIORITY_OPTIONS, STATUS_OPTIONS } from "../constants/formOptions";
 
@@ -10,6 +11,7 @@ function splitLines(value: string): string[] {
 }
 
 export default function UserTaskSheetForm() {
+  const navigate = useNavigate();
   const [phase, setPhase] = useState(PHASE_OPTIONS[0]);
   const [taskName, setTaskName] = useState("");
   const [objective, setObjective] = useState("");
@@ -110,6 +112,13 @@ export default function UserTaskSheetForm() {
 
         <button type="submit" disabled={loading}>
           {loading ? "Envoi..." : "Soumettre"}
+        </button>
+        <button
+          type="button"
+          className="secondary"
+          onClick={() => navigate("/user")}
+        >
+          Retour
         </button>
       </form>
     </div>

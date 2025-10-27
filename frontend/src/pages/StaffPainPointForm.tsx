@@ -121,6 +121,13 @@ export default function StaffPainPointForm() {
         <button type="submit" disabled={loading}>
           {loading ? "Enregistrement..." : "Enregistrer"}
         </button>
+        <button
+          type="button"
+          className="secondary"
+          onClick={() => navigate("/staff/dashboard")}
+        >
+          Retour
+        </button>
       </form>
     </div>
   );

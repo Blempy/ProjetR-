@@ -64,6 +64,14 @@ button:disabled {
   cursor: progress;
 }
 
+button.secondary {
+  background: #64748b;
+}
+
+button.secondary:hover {
+  opacity: 0.9;
+}
+
 .error {
   color: #dc2626;
 }
