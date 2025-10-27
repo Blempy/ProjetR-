@@ -98,3 +98,18 @@ Ce fichier sert à tracer les interventions de l’agent (assistant IA) sur le p
 - **Todo / suivi** :
   - [ ] Planifier le retrait progressif de l’appli Flask.
   - [ ] Définir la stratégie de tests (unitaires + end-to-end) pour la nouvelle stack.
+
+### 2025-10-27 — Session #4
+- **Participants** : Blempy, IA
+- **Objectifs** :
+  - Retirer l’ancienne application Flask devenue obsolète.
+  - Mettre à jour la documentation et la todo pour pointer exclusivement vers FastAPI + React.
+- **Actions réalisées** :
+  - Suppression des fichiers `app.py`, `templates/`, `static/`.
+  - Vidage de `requirements.txt` (renvoi vers `backend/requirements.txt`).
+  - Mise à jour du README (nouvelles instructions backend/frontend), `refs/todo.md`, `refs/plan_developpement.md` et création de `docs/retire_flask.md`.
+  - Enregistrement du point de douleur (DET / Suivi de chantier) via l’API (`refs/points_douleur/det.md`).
+- **Fichiers modifiés / supprimés** : `README.md`, `requirements.txt`, `docs/retire_flask.md`, `refs/todo.md`, `refs/plan_developpement.md`, `refs/points_douleur/det.md`, suppression de `app.py`, `templates/`, `static/`.
+- **Todo / suivi** :
+  - [ ] Définir la stratégie de tests (unitaires + end-to-end) pour la nouvelle stack.
+  - [ ] Migrer les formulaires “utilisateur final” (notes de calcul, etc.) dans le portail React.

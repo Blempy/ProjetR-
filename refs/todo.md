@@ -26,7 +26,7 @@
 - [x] Implémenter l’authentification multi-comptes staff (hash + stockage sécurisé, portail React).
 - [x] Migrer la création de fiches tâches vers FastAPI + React (staff).
 - [x] Migrer les points de douleur vers l’API + React.
-- [ ] Planifier le retrait progressif de Flask après validation (`docs/retire_flask.md`).
+- [x] Planifier le retrait progressif de Flask après validation (`docs/retire_flask.md`).
 
 ### Backlog général
 
