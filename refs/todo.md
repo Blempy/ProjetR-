@@ -18,6 +18,13 @@
 - [x] Isoler l’interface de création de fiches tâches dans un espace privé / administrateur.
 - [x] Mettre en place un mécanisme d’accès (auth ou protection simple) pour l’interface privée.
 
+### Mise au norme des données d’entrées (AVP)
+
+- [ ] Compléter la fiche (`refs/fiches_taches/2025-10-27-mise-au-norme-des-donnes-dentres.md`) : préciser étapes, données d’entrée et livrables.
+- [ ] Inventorier les plans/datasets à harmoniser et définir les formats cibles.
+- [ ] Identifier les outils/scripts nécessaires (AutoCAD, Covadis, routines de conversion).
+- [ ] Définir une première automatisation cible (checklist + script de contrôle).
+
 ### Migration FastAPI + React
 
 - [x] Valider l’architecture cible (`docs/migration_fastapi_react.md`) et la structure des dossiers `backend/` + `frontend/`.
@@ -38,6 +45,7 @@
 
 - Saisie et enrichissement des fiches tâches prioritaires (`refs/fiches_taches/2025-10-25-gnration-automatise-des-notes-de-calcul-dassainissement-bassins-de-rtention-et-rseaux-ep.md`).
 - Consolidation des formules et hypothèses `refs/assainissement_notes_calcul.md`.
+- Suivi de la fiche « Mise au norme des données d’entrées » (`refs/fiches_taches/2025-10-27-mise-au-norme-des-donnes-dentres.md`).
 
 
 ## Finalisé
