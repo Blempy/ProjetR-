@@ -6,6 +6,7 @@ import StaffLogin from "./pages/StaffLogin";
 import StaffDashboard from "./pages/StaffDashboard";
 import StaffTaskSheetForm from "./pages/StaffTaskSheetForm";
 import StaffTaskSheetList from "./pages/StaffTaskSheetList";
+import StaffTaskSheetEdit from "./pages/StaffTaskSheetEdit";
 import StaffPainPointForm from "./pages/StaffPainPointForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NavBar from "./components/NavBar";
@@ -46,6 +47,14 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <StaffTaskSheetForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="staff/task-sheets/edit"
+            element={
+              <ProtectedRoute>
+                <StaffTaskSheetEdit />
               </ProtectedRoute>
             }
           />

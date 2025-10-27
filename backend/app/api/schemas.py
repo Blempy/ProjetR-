@@ -48,6 +48,15 @@ class TaskSheetResponse(BaseModel):
     phase: str
 
 
+class TaskSheetDetail(TaskSheetCreate):
+    path: str
+    last_updated: str
+
+
+class TaskSheetUpdate(TaskSheetCreate):
+    path: str
+
+
 class PainPointCreate(BaseModel):
     phase: str
     task: str

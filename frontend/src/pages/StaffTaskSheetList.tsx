@@ -54,6 +54,7 @@ export default function StaffTaskSheetList() {
             <th>Phase</th>
             <th>Dernière mise à jour</th>
             <th>Chemin</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -64,6 +65,17 @@ export default function StaffTaskSheetList() {
               <td>{item.updated_at || "-"}</td>
               <td>
                 <code>{item.path}</code>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="secondary"
+                  onClick={() =>
+                    navigate(`/staff/task-sheets/edit?path=${encodeURIComponent(item.path)}`)
+                  }
+                >
+                  Modifier
+                </button>
               </td>
             </tr>
           ))}

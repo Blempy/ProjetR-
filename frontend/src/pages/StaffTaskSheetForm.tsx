@@ -8,13 +8,7 @@ import {
   STATUS_OPTIONS,
   FREQUENCY_OPTIONS
 } from "../constants/formOptions";
-
-function splitLines(value: string): string[] {
-  return value
-    .split(/\r?\n/u)
-    .map((line) => line.trim())
-    .filter((line) => line.length > 0);
-}
+import { splitLines } from "../utils/text";
 
 export default function StaffTaskSheetForm() {
   const { user } = useAuth();

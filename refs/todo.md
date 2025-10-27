@@ -11,6 +11,8 @@
 - [ ] Constituer une bibliothèque de coefficients (ruissellement, pluies de projet) réutilisable par les scripts.
 - [ ] Prototyper le script Python d’extraction des données AutoCAD/Covadis et de génération de la note.
 - [ ] Préparer une future feature : extraction automatique des surfaces (AutoCAD/Covadis/Mensura) pour alimenter la saisie.
+- [ ] Confirmer les sources officielles des pluies de projet utilisables (Montana, données locales, etc.).
+- [ ] Standardiser le format Covadis/Mensura attendu pour les exports (colonnes, identifiants, unités).
 
 ### Interfaces web
 
@@ -24,23 +26,63 @@
 - [ ] Inventorier les plans/datasets à harmoniser et définir les formats cibles.
 - [ ] Identifier les outils/scripts nécessaires (AutoCAD, Covadis, routines de conversion).
 - [ ] Définir une première automatisation cible (checklist + script de contrôle).
+- [ ] Formaliser les règles de nommage/calques validées avec le BE.
 
 ### Automatisations thèmes transverses (modules 01 → 12)
 
-- [ ] `2025-10-27-architecture-fonctionnelle-du-projet.md` : générer automatiquement la cartographie des blocs (diagrammes + documentation) à partir d’un référentiel YAML/JSON.
-- [ ] `2025-10-27-definition-du-besoin-cahier-des-charges.md` : créer un assistant de collecte (formulaire) et générateur de cahier des charges en Markdown/Word.
-- [ ] `2025-10-27-mise-a-la-charte-graphique.md` : définir des scripts de validation (lint) sur plans/rapports pour garantir la charte graphique.
-- [ ] `2025-10-27-gestion-de-projet-et-versionning.md` : automatiser la création d’espaces projet (Git/Notion) et la synchronisation des statuts.
-- [ ] `2025-10-27-calculs-vrd.md` : connecter les moteurs de calcul aux fiches (imports quantitatifs + génération de tableaux).
-- [ ] `2025-10-27-gestion-des-donnees-de-terrain.md` : mettre en place une pipeline d’ingestion terrain (imports DXF → base normalisée + géoréférencement).
-- [ ] `2025-10-27-generation-de-rapports-et-livrables.md` : industrialiser la production des rapports (templates Word/PDF + scripts d’assemblage).
-- [ ] `2025-10-27-verification-normative.md` : développer une check-list automatisée (règles métiers + génération de rapport de conformité).
-- [ ] `2025-10-27-coordination-et-communication.md` : automatiser la diffusion des comptes-rendus / plans d’actions (emails + tableau de bord).
-- [ ] `2025-10-27-integration-sig.md` : scripts d’import/export SIG (shp/geojson) et synchronisation avec la base projet.
-- [ ] `2025-10-27-integration-de-donnees-publiques.md` : connecter les APIs publiques (cadastre, PLU) pour enrichir les dossiers.
-- [ ] `2025-10-27-cout-et-budgetisation-automatique.md` : relier les fiches de quantités à une base de prix pour produire des estimations automatiques.
-- [ ] `2025-10-27-compte-rendu-de-reunion.md` : générer des comptes rendus types avec reprise automatique des décisions/actions.
-- [ ] `2025-10-27-pilotage-a-distance-slack-webhook.md` : mettre en place un bot Slack/Webhook pour notifier les jalons et suivre les tâches.
+- `2025-10-27-architecture-fonctionnelle-du-projet.md` (`docs/agents/architecture-fonctionnelle-du-projet.md`)
+  - [ ] Définir les niveaux de détail attendus (macro vs micro) pour les schémas fonctionnels.
+  - [ ] Choisir l’outil de restitution (Mermaid, Draw.io, diagrams Python) et formaliser le template YAML/JSON.
+- `2025-10-27-definition-du-besoin-cahier-des-charges.md` (`docs/agents/definition-du-besoin-cahier-des-charges.md`)
+  - [ ] Lister les informations minimales à collecter auprès du MOA.
+  - [ ] Décider des formats finaux (Word, Markdown, Excel) et du mode de génération.
+- `2025-10-27-mise-a-la-charte-graphique.md` (`docs/agents/mise-a-la-charte-graphique.md`)
+  - [ ] Rassembler les règles actuelles de charte graphique (calques, couleurs, nomenclature).
+  - [ ] Prioriser les contrôles automatiques vs vérifications manuelles.
+- `2025-10-27-gestion-de-projet-et-versionning.md` (`docs/agents/gestion-de-projet-et-versionning.md`)
+  - [ ] Choisir les outils cibles pour la gestion de projet (Git, Notion, GanttProject, etc.).
+  - [ ] Clarifier la fréquence de synchronisation et les informations à suivre automatiquement.
+- `2025-10-27-calculs-vrd.md` (`docs/agents/calculs-vrd.md`)
+  - [ ] Cataloguer les méthodes de calcul à supporter (rationnelle, Caquot, tables internes).
+  - [ ] Identifier les gabarits AutoCAD/Covadis utilisables pour les premiers tests.
+- `2025-10-27-gestion-des-donnees-de-terrain.md` (`docs/agents/gestion-des-donnees-de-terrain.md`)
+  - [ ] Lister les formats livrés par les géomètres (CSV, DXF, LandXML, etc.).
+  - [ ] Qualifier les conversions nécessaires avant intégration SIG ou calculs.
+- `2025-10-27-generation-de-rapports-et-livrables.md` (`docs/agents/generation-de-rapports-et-livrables.md`)
+  - [ ] Recenser les gabarits Word/PDF existants et ceux à créer.
+  - [ ] Définir les règles de nommage et de diffusion des livrables générés.
+- `2025-10-27-verification-normative.md` (`docs/agents/verification-normative.md`)
+  - [ ] Établir la liste des normes et référentiels à intégrer dans les contrôles.
+  - [ ] Définir le format du rapport d’écart et sa diffusion.
+- `2025-10-27-coordination-et-communication.md` (`docs/agents/coordination-et-communication.md`)
+  - [ ] Identifier les canaux de communication à supporter (mail, Teams, Slack, …).
+  - [ ] Choisir les indicateurs de suivi ou KPI à afficher automatiquement.
+- `2025-10-27-integration-sig.md` (`docs/agents/integration-sig.md`)
+  - [ ] Préciser les systèmes de coordonnées utilisés par projet.
+  - [ ] Planifier les fréquences de mise à jour des fonds externes.
+- `2025-10-27-integration-de-donnees-publiques.md` (`docs/agents/integration-de-donnees-publiques.md`)
+  - [ ] Lister les APIs open data prioritaires (cadastre, PLU, réseaux).
+  - [ ] Vérifier les licences d’utilisation et contraintes juridiques.
+- `2025-10-27-cout-et-budgetisation-automatique.md` (`docs/agents/cout-et-budgetisation-automatique.md`)
+  - [ ] Structurer la base de prix (sources, unités, versioning).
+  - [ ] Définir le process de validation humaine avant diffusion d’un budget.
+- `2025-10-27-compte-rendu-de-reunion.md` (`docs/agents/compte-rendu-de-reunion.md`)
+  - [ ] Confirmer les sources d’entrée (notes manuscrites, audio, chat).
+  - [ ] Définir le format standard du compte rendu (rubriques, styles).
+- `2025-10-27-pilotage-a-distance-slack-webhook.md` (`docs/agents/pilotage-a-distance-slack-webhook.md`)
+  - [ ] Valider les espaces Slack/webhook déjà disponibles.
+  - [ ] Lister les actions à déclencher automatiquement depuis Slack/bot.
+- `2025-10-27-test-api-fiche.md` (`docs/agents/test-api-fiche.md`)
+  - [ ] Lister les endpoints à tester en priorité (création fiche, points de douleur, auth).
+  - [ ] Définir les jeux de données de test et les assertions attendues.
+
+### Agents conversationnels (orchestrateur & prompts)
+
+- [ ] Formaliser le schéma d’échange entre orchestrateur, agent de dispatch et spécialistes (format JSON, événements, erreurs).
+- [ ] Rédiger un premier jet de prompts pour l’agent d’accueil, l’agent de clarification et l’agent de synthèse.
+- [ ] Générer une version JSON/YAML des briefs `docs/agents/*.md` pour chargement automatique par le backend.
+- [ ] Prototyper un endpoint FastAPI `/api/agents/route` qui appelle l’orchestrateur avec une requête utilisateur.
+- [ ] Définir un plan de tests (unitaires + scénarios de bout en bout) pour valider les enchaînements d’agents.
 
 ### Migration FastAPI + React
 

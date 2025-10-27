@@ -33,6 +33,15 @@ export interface TaskSheetResponse {
   phase: string;
 }
 
+export interface TaskSheetDetail extends TaskSheetPayload {
+  path: string;
+  last_updated: string;
+}
+
+export interface TaskSheetUpdatePayload extends TaskSheetPayload {
+  path: string;
+}
+
 export interface TaskSheetListItem {
   task_name: string;
   phase: string;
@@ -45,7 +54,17 @@ export async function createTaskSheet(payload: TaskSheetPayload): Promise<TaskSh
   return data;
 }
 
+export async function fetchTaskSheetDetail(path: string): Promise<TaskSheetDetail> {
+  const { data } = await api.get<TaskSheetDetail>("/staff/task-sheets/detail", { params: { path } });
+  return data;
+}
+
 export async function fetchTaskSheets(): Promise<TaskSheetListItem[]> {
   const { data } = await api.get<TaskSheetListItem[]>("/staff/task-sheets");
+  return data;
+}
+
+export async function updateTaskSheet(payload: TaskSheetUpdatePayload): Promise<TaskSheetResponse> {
+  const { data } = await api.put<TaskSheetResponse>("/staff/task-sheets", payload);
   return data;
 }
