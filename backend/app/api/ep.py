@@ -1,10 +1,8 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 
-from ..auth.deps import get_staff_user
-from ..auth.models import StaffUser
 from ..ep import EPCalculator, EPInput
 from ..ep.exporter import generate_excel
 
@@ -13,7 +11,7 @@ router = APIRouter(prefix="/ep", tags=["ep"])
 
 
 @router.post("/calc", summary="Calculer une note EP", response_class=JSONResponse)
-async def calculate_ep(payload: EPInput, user: StaffUser = Depends(get_staff_user)):
+async def calculate_ep(payload: EPInput):
     try:
         result = EPCalculator(payload).run()
     except ValueError as exc:

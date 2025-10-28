@@ -8,6 +8,7 @@ export default function UserPortal() {
       <nav className="menu">
         <Link to="/user/task-sheets/new">Proposer une fiche tâche</Link>
         <Link to="/user/pain-points/new">Déclarer un point de douleur</Link>
+        <Link to="/user/ep">Calcul note EP</Link>
       </nav>
     </div>
   );

@@ -92,6 +92,9 @@ où :
   - `refs/379910604-Verification-autocurage-xls.xls`
   - `refs/379910726-NOTE-CALCUL-Hydraulique-Caquot.xls`
   - `refs/384329471-Dim des-ea ux-use es-E xcel.xls`
+- Guide SYMASOL — Gestion des eaux pluviales : guide pour la mise en œuvre de techniques alternatives (juin 2016).  
+  - Contient les annexes 3 et 4 (tableau d’aide au calcul, exemple complet de bassins/noues).  
+  - Annexes Montana (coefficients pour Saint-Brieuc) et grille de calcul du volume stocké utilisées dans `refs/Annexe+5 (2).pdf`.
 
 ## 7. Analyse des gabarits existants
 

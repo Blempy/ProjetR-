@@ -8,6 +8,7 @@ import StaffTaskSheetForm from "./pages/StaffTaskSheetForm";
 import StaffTaskSheetList from "./pages/StaffTaskSheetList";
 import StaffTaskSheetEdit from "./pages/StaffTaskSheetEdit";
 import StaffPainPointForm from "./pages/StaffPainPointForm";
+import EPCalcForm from "./pages/EPCalcForm";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NavBar from "./components/NavBar";
 
@@ -15,10 +16,7 @@ function Home() {
   return (
     <div className="page">
       <h1>MOE VRD Automatisation</h1>
-      <nav className="menu">
-        <Link to="user">Espace utilisateur</Link>
-        <Link to="staff/login">Espace staff</Link>
-      </nav>
+      <p>Utilisez la barre de navigation supérieure pour accéder aux espaces utilisateur et staff.</p>
     </div>
   );
 }
@@ -33,6 +31,7 @@ export default function App() {
           <Route path="user" element={<UserPortal />} />
           <Route path="user/task-sheets/new" element={<UserTaskSheetForm />} />
           <Route path="user/pain-points/new" element={<UserPainPointForm />} />
+          <Route path="user/ep" element={<EPCalcForm />} />
           <Route path="staff/login" element={<StaffLogin />} />
           <Route
             path="staff/dashboard"
